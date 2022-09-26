@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        *{
+            font-family:arial;
+            box-sizing: border-box;
+            list-style-type: none;
+        }
+        body{
+            background-image: url(img/Background.png);
+            background-size:cover;
+        }
+        .container_one{
+            width:21.319vw;
+            height:74.17783191230207vh;
+            border-radius: 2.569vw;
+            background-color:#01C0FD;
+            margin-left:38.681vw;
+            margin-top:11.69305724725944vh;
+            position:absolute;
+            display: inline-block;
+        }
+        .title{
+            width:17.153vw;
+            height:7.673568818514006vh;
+            margin:3.6540803897685747vh 0px 0px 2.083vw;
+        }
+        .title_head{
+            width:9.514vw;
+            height:5.237515225334957vh;
+            float:left;
+            margin:0px;
+        }
+        .head{
+            font-size: 1.736vw;
+            color:white;
+            font-weight: bold;
+            margin:0px;
+            display: inline-block;
+        }
+        .title_add{
+            width:7.639vw;
+            height:7.673568818514006vh;
+            float:left;
+            margin:0px;
+        }
+        .add{
+            width:4.375vw;
+            height:7.673568818514006vh;
+            float:right;
+            cursor: pointer;
+        }
+        .title_line{
+            width:9.514vw;
+            height:2.4360535931790497vh;
+            float:left;
+            margin-top:-2.4360535931790497vh;
+            overflow: hidden;
+        }
+        .line{
+            height:2.4360535931790497vh;
+        }
+        .type{
+            width:8.472vw;
+            height:2.4360535931790497vh;
+            display:inline-block;
+            float:right;
+            border:0px;
+            background-color: transparent;
+            color:white;
+            font-size:1.042vw;
+        }
+        ::placeholder{
+            font-size:1.042vw;
+            color:white;
+            opacity: 50%;
+        }
+        .container_two{
+            width:21.319vw;
+            height:58.34348355663824vh;
+            border-radius: 2.569vw;
+            background-color:#ffffff;
+            margin-left:0px;
+            margin-top:4.6285018270401945vh;
+            position:relative;
+            display: inline-block;
+            padding:4.6285018270401945vh 1.042vw 3.6540803897685747vh 1.042vw;
+            overflow: auto;
+        }
+        .list{
+            width:100%;
+            margin:0px;
+            padding:0px;
+        }
+        .list_item{
+            width:100%;
+            height:7.3081607795371495vh;
+            border-radius:1.389vw;
+            padding:1.2180267965895248vh 0px 1.2180267965895248vh 0px;
+        }
+        ul li:hover{
+            background-color: #fafafa;
+        }
+        ul li:hover .second{
+            opacity: 1;
+        }
+        .list_parent{
+            width:17.153vw;
+            height:4.872107186358099vh;
+            margin-left:1.042vw;
+        }
+        .first{
+            width:14.375vw;
+            height:2.192448233861145vh;
+            float:left;
+            overflow: hidden;
+        }
+        .first_para{
+            font-size: 1.181vw;
+            font-weight: bold;
+            color:#01C0FD;
+            display: inline-block;
+            margin:0px;
+        }
+        .second{
+            width:2.778vw;
+            height:1.8270401948842874vh;
+            margin:1.46163215590743vh 0px 1.5834348355663823vh 0px;
+            float:left;
+            overflow: hidden;
+            opacity:0;
+        }
+        .edit_btn{
+            width:1.042vw;
+            height:1.8270401948842874vh;
+            float:left;
+            cursor: pointer;
+        }
+        .del_btn{
+            width:0.868vw;
+            height:1.8270401948842874vh;
+            float:right;
+            cursor: pointer;
+        }
+        .third{
+            width:14.375vw;
+            height:1.3398294762484773vh;
+            float:left;
+            margin-top:-1.5834348355663823vh;
+        }
+        .date{
+            width:9.028vw;
+            height:1.3398294762484773vh;
+            display: inline-block;
+            margin:0px;
+            padding:0px;
+            border:0px;
+            transform: translateY(-3px);
+            color:#A39A9A;
+            font-size: 0.764vw;
+            background-color: transparent;
+        }
+        ::-webkit-calendar-picker-indicator{ 
+            display: none; 
+        }
+    @media only screen and (max-width: 600px) {
+        body{
+            margin:0px;
+            background-size: contain;
+        }
+        .container_one{
+            width:100%;
+            height:100%;
+            background-color:#01C0FD;
+            position:absolute;
+            display: inline-block;
+            border-radius: 0px;
+            margin:0px;
+        }
+        .title{
+            width:auto;
+            height:63px;
+            margin:30px 30px 0px 30px;
+        }
+        .title_add{
+            width:110px;
+            height:63px;
+            float:right;
+            margin:0px;
+        }
+        .title_line{
+            width:137px;
+            height:20px;
+            float:left;
+            margin-top:0px;
+            overflow: hidden;
+        }
+        .container_two{
+            width:100%;
+            height:85%;
+            border-radius:37px 37px 0px 0px;
+            background-color:#ffffff;
+            margin:15% 0 0 0;
+            position:relative;
+            display: inline-block;
+            padding:38px 15px 30px 15px;
+            overflow: auto;
+        }
+        .list_parent{
+            width:auto;
+            height:40px;
+            margin-left:15px;
+            margin-right:15px;
+        }
+        .second{
+            width:40px;
+            height:15px;
+            margin:12px 0px 13px 0px;
+            float:right;
+            overflow: hidden;
+            opacity:0;
+        }
+        .third{
+            width:207px;
+            height:11px;
+            float:left;
+            margin-top:8px;
+        }
+    }
+    @media (min-width: 768px) and (max-width: 1024px) {
+        body{
+            margin:0px;
+            background-size: contain;
+        }
+        .container_one{
+            width:100%;
+            height:100%;
+            background-color:#01C0FD;
+            position:absolute;
+            display: inline-block;
+            border-radius: 0px;
+            margin:0px;
+        }
+        .title{
+            width:auto;
+            height:63px;
+            margin:30px 30px 0px 30px;
+        }
+        .title_add{
+            width:110px;
+            height:63px;
+            float:right;
+            margin:0px;
+        }
+        .title_line{
+            width:137px;
+            height:20px;
+            float:left;
+            margin-top:0px;
+            overflow: hidden;
+        }
+        .container_two{
+            width:100%;
+            height:85%;
+            border-radius:37px 37px 0px 0px;
+            background-color:#ffffff;
+            margin:15% 0 0 0;
+            position:relative;
+            display: inline-block;
+            padding:38px 15px 30px 15px;
+            overflow: auto;
+        }
+        .list_parent{
+            width:auto;
+            height:40px;
+            margin-left:15px;
+            margin-right:15px;
+        }
+        .second{
+            width:40px;
+            height:15px;
+            margin:12px 0px 13px 0px;
+            float:right;
+            overflow: hidden;
+            opacity:0;
+        }
+        .third{
+            width:207px;
+            height:11px;
+            float:left;
+            margin-top:8px;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="container_one">
+        <div class="title">
+            <div class="title_head">
+                <p class="head">To Do List</p>
+            </div>
+            <div class="title_add">
+                <img src="img/add.png" alt="" class="add" id="Add" onclick="addText()">
+            </div>
+            <div class="title_line">
+                <img src="img/Line 1@2x.png" alt="" class="line">
+                <input type="text" class="type" placeholder="Say Something..." id="typeText">
+            </div>
+        </div>
+        <div class="container_two">
+            <ul class="list" id="List">
+                
+            </ul>
+        </div>
+    </div>
+    <script>
+        let typeText = document.getElementById("typeText");
+        let List = document.getElementById(`List`);
+        let i = 1;
+        function textFilter(x){
+            if (x){
+                return x;
+            }else{
+                return alert(`Type something to list!`);
+            }
+        }
+        function delThis(listId){
+            let current = document.getElementById(`listItem${listId}`);
+            let currentText = document.getElementById(`firstPara${listId}`).innerHTML;
+            let delConfirm = confirm(`Are you sure you want to delete "${currentText}"?`);
+            if (delConfirm){
+                return List.removeChild(current);
+            }
+        }
+        function editThis(listId){
+            let currentText = document.getElementById(`firstPara${listId}`);
+            let newText = prompt("Type to edit below", currentText.innerHTML );
+            if(newText){
+                currentText.innerHTML = newText;
+            }else{
+                console.log(`Edit Canceled`);
+            }
+        }
+        function addText(){
+            let addData = textFilter(typeText.value);
+            if (addData){
+                List.innerHTML += `
+            <li class="list_item" id="listItem${i}">
+                    <div class="list_parent" id="listParent">
+                        <div class="first" id="First">
+                            <p class="first_para" id="firstPara${i}">${addData}</p>
+                        </div>
+                        <div class="second" id="Second">
+                            <img src="img/edit.png" alt="" class="edit_btn" id="editBtn${i}" onclick="editThis(${i})">
+                            <img src="img/delete.png" alt="" class="del_btn" id="delBtn${i}" onclick="delThis(${i})">
+                        </div>
+                        <div class="third" id="Third">
+                            <input type="date" class="date" id="Date">
+                        </div>
+                    </div>
+                </li>
+                `;
+            }
+            i++;
+            typeText.value = "";
+        }
+    </script>
+</body>
+</html>

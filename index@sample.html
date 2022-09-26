@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+</head>
+<body>
+    <h1>To Do List</h1>
+    <div class="to_do_list">
+        <div class="inputme">
+            <input type="text" class="inputtext" id="inputText">
+            <button class="inputbtn" id="inputBtn" onclick="btnFun()">
+                Add
+            </button>
+        </div>
+        <div class="listme">
+            <ul class="outputlist" id="outputList">
+
+            </ul>
+        </div>
+    </div>
+    <script>
+        let inputText = document.getElementById("inputText");
+        let inputBtn  = document.getElementById("inputBtn");
+        let outputList = document.getElementById("outputList");
+        let mintextLength  = 3;
+        let i=1;
+        function textFilter(x){
+            if (x){
+                if (x.length >= mintextLength){
+                    return x;
+                }else{
+                    return alert ("Minimum text should at least be 3");
+                }
+                }else{
+                     return alert ("no word has written");
+                }}
+        function delList(listId){
+            let current = document.getElementById(`listItem${listId}`);
+            let currentText = document.getElementById(`listText${listId}`).innerHTML;
+            let delConfirm = confirm(`Are you sure you want to delete ${currentText}?`);
+            
+            if(delConfirm){
+                 outputList.removeChild(current);
+            }else{
+                console.log(`Delete Canceled`);
+            }
+        }
+        function editList(listId){
+            let currentText = document.getElementById(`listText${listId}`);
+            let newText = prompt("Type new list",currentText.innerHTML);
+            if (newText){
+                currentText.innerHTML = newText;
+            }else{
+                console.log('no list has edited');
+            }
+        }
+        function showList(text){
+            outputList.innerHTML += `
+            <li class="list_item" id="listItem${i}">
+                <button class="del_btn" onclick="delList(${i})">Delete</button>  
+                <button class="edit_btn" onclick="editList(${i})">Edit</button>    
+                <span class="list_text" id="listText${i}">${text}</span>
+            </li>
+            `;
+            i++;
+        }
+        function btnFun(){
+            let inputData = textFilter(inputText.value);
+            if (inputData){
+                showList(inputData);
+                inputText.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
